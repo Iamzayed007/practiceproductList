@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
+import ProductList from './views/ProductList/ProductList';
+import DataProvider from './context/DataProvider';
+import useData from './hooks/useData';
+import useDataHelper from './hooks/useDataHelper';
+
 
 function App() {
+const {fetchData} =useData()
+// const dataContext = useData();
+
+  useEffect(() => {
+    fetchData('https://dummyjson.com/products');
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<div class="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-10">         
+        <ProductList />
+      </div>
   );
 }
 
