@@ -1,0 +1,58 @@
+
+.ribbonContainer{
+    position: absolute;
+    top: 11px;
+    left: -5px;
+    z-index: 10;
+    font-size: 9px;
+    color: white;
+}
+.ribbon{
+   position: relative;
+   background: linear-gradient(to right,#D66F00, #FFA03B);
+   width: 45px;
+   height: 20px;
+   border-top-left-radius: 5px ;
+   border-bottom-right-radius: 1px ;
+   
+}
+.ribbon::before{
+    content: '';
+    position: absolute;
+    top: -11.4px;
+    left: 0px;
+    background: linear-gradient(#D66F00, #FFB74D);
+    width: 28px;
+    height: 56px;
+    overflow: hidden;
+    clip-path: polygon(0 56%, 18% 68%, 18% 56%);
+}
+
+.ribbonTail{
+    position: absolute;
+    padding-bottom: 21px;
+    top: 0px;
+    left: 44px; 
+    width: 15px;
+    height: 22px;
+    background: #FFB74D;
+    overflow: hidden;
+    clip-path: polygon(0 0, 0 99%, 80% 0%);
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 11px;
+    overflow: hidden;
+
+}
+.ribbonLowerTail{
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 44px;
+    background: #D66F00;
+    width: 12px;
+    height: 20px;
+    border-bottom-right-radius: 5px;
+    overflow: hidden;
+    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+    z-index: -1;
+}

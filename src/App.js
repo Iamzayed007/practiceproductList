@@ -15,7 +15,7 @@ const {fetchData} =useData()
   }, []);
 
   return (
-<div class="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-10">         
+<div className="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-10">         
         <ProductList />
       </div>
   );
