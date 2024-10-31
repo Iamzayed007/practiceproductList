@@ -5,7 +5,7 @@ import useData from '../../hooks/useData';
 
 function Card({ product }) {
   const { brand, title, price, discountPercentage, images, id } = product
-  const { cart, addToCart, removeFromCart } = useData()
+  const { cart, addToCart, removeFromCart ,toggleWishlist,wishlist} = useData()
   const productInCart = cart.find((item) => item.id === id);
   const discountAmount = price && discountPercentage ? (price * (discountPercentage / 100)).toFixed(2) : 0;
   const discountedPrice = price && discountAmount && (price - discountAmount).toFixed(2)
@@ -13,7 +13,7 @@ function Card({ product }) {
     ...product,
     discountedPrice
   }
-
+  const isInWishlist = wishlist && wishlist.some((item) => item.id === product.id);
   return (
     <div className="group flex relative flex-col flex-1 shrink rounded-lg basis-0 min-h-[332px]  max-w-[200px] bg-white">
       {discountPercentage && (
@@ -49,8 +49,10 @@ function Card({ product }) {
           )}
         </div>
         <div className="absolute inset-0 bg-gray-900 bg-opacity-50 flex flex-col items-center justify-center space-y-2 hidden group-hover:flex rounded-lg">
-          <div className='absolute top-2 right-4 leading-none font-[475] hover:cursor-pointer'>
-            <Icon name="fa-regular fa-heart" size="lg" />
+          <div className='absolute top-2 right-4 leading-none font-[475] hover:cursor-pointer' 
+          onClick={() => toggleWishlist(updatedProduct)}
+          >
+            <Icon name="fa-regular fa-heart" size="lg" color={isInWishlist ? 'red': 'white'} />
           </div>
 
           <div className="flex flex-col space-y-2 text-sm leading-none font-[475] w-full mx-auto px-4">

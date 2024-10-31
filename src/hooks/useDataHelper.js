@@ -3,7 +3,8 @@ import { useState } from "react"
 const useDataHelper = () => {
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
-
+  const [wishlist, setWishlist] = useState([]);
+  
   const fetchData = async (url) => {
     if (!url) return; // Exit if no URL is provided
 
@@ -52,19 +53,28 @@ const useDataHelper = () => {
     });
   };
 
-
+  const toggleWishlist = (product) => {
+    setWishlist((prevWishlist) => {
+      const isInWishlist = prevWishlist.some((item) => item.id === product.id);
+      if (isInWishlist) {
+        return prevWishlist.filter((item) => item.id !== product.id);
+      } else {
+        return [...prevWishlist, product];
+      }
+    });
+  };
 
   return {
     products,
     cart,
-
+    wishlist,
 
     setProducts,
 
-
     fetchData,
     addToCart,
-    removeFromCart
+    removeFromCart,
+    toggleWishlist
   }
 }
 export default useDataHelper
