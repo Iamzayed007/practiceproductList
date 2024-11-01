@@ -15,7 +15,7 @@ function Card({ product }) {
   }
   const isInWishlist = wishlist && wishlist.some((item) => item.id === product.id);
   return (
-    <div className="group flex relative flex-col flex-1 shrink rounded-lg basis-0 min-h-[332px]  max-w-[200px] bg-white">
+    <div className="group flex relative flex-col flex-1 justify-center items-center shrink rounded-lg basis-0 max-h-[332px]  max-w-[210px] bg-white">
       {discountPercentage && (
         <div className='ribbonContainer text-center'>
           <div className="ribbon">
@@ -48,16 +48,16 @@ function Card({ product }) {
             </div>
           )}
         </div>
-        <div className="absolute inset-0 bg-gray-900 bg-opacity-50 flex flex-col items-center justify-center space-y-2 hidden group-hover:flex rounded-lg">
+        <div className="absolute inset-0 bg-gray-900 bg-opacity-40  flex-col items-center justify-center space-y-2 hidden group-hover:flex rounded-lg w-full">
           <div className='absolute top-2 right-4 leading-none font-[475] hover:cursor-pointer' 
           onClick={() => toggleWishlist(updatedProduct)}
           >
             <Icon name="fa-regular fa-heart" size="lg" color={isInWishlist ? 'red': 'white'} />
           </div>
 
-          <div className="flex flex-col space-y-2 text-sm leading-none font-[475] w-full mx-auto px-4">
+          <div className="flex flex-col space-y-2 text-sm leading-none font-[475] w-full mx-auto px-2">
             {(productInCart && productInCart.id == id) ? <div
-              className="flex gap-1 justify-between items-center py-1.5 pr-4 pl-3 w-full text-white rounded-md border-2 border-solid  bg-green-500  border-green-500 border-opacity-30 min-h-[32px]"
+              className="flex  gap-1 justify-between items-center py-1.5 pr-4 pl-3 w-full text-white rounded-md border-2 border-solid  bg-green-500  border-green-500 border-opacity-30 min-h-[32px]"
             >
               <div className="self-stretch pb-0.5 my-auto cursor-pointer"
                 onClick={() => removeFromCart(id)}

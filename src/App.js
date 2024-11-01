@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import ProductList from './views/ProductList/ProductList';
-import DataProvider from './context/DataProvider';
 import useData from './hooks/useData';
-import useDataHelper from './hooks/useDataHelper';
 
 
 function App() {
-const {fetchData} =useData()
-// const dataContext = useData();
+  const { fetchData } = useData()
+
 
   useEffect(() => {
-    fetchData('https://dummyjson.com/products');
+    fetchData('https://dummyjson.com/products?limit=50');
   }, []);
 
   return (
-<div className="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-10">         
-        <ProductList />
+    <div className="relative isolate  px-6 py-14 sm:py-32 lg:px-10 flex justify-center">
+      <div className="relative isolate  px-6   lg:px-10 lg:w-[1112px]">
+          <ProductList />
       </div>
+    </div>
   );
 }
 
