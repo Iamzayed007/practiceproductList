@@ -5,7 +5,7 @@ import useData from '../../hooks/useData';
 
 function Card({ product }) {
   const { brand, title, price, discountPercentage, images, id } = product
-  const { cart, addToCart, removeFromCart ,toggleWishlist,wishlist} = useData()
+  const { cart, addToCart, removeFromCart, toggleWishlist, wishlist } = useData()
   const productInCart = cart.find((item) => item.id === id);
   const discountAmount = price && discountPercentage ? (price * (discountPercentage / 100)).toFixed(2) : 0;
   const discountedPrice = price && discountAmount && (price - discountAmount).toFixed(2)
@@ -17,9 +17,10 @@ function Card({ product }) {
   return (
     <div className="group flex relative flex-col flex-1 justify-center items-center shrink rounded-lg basis-0 max-h-[332px]  max-w-[210px] bg-white">
       {discountPercentage && (
-        <div className='ribbonContainer text-center'>
-          <div className="ribbon">
-            <span className='align-middle'>  -৳ {discountPercentage}%</span>
+        <div className='ribbonContainer'>
+          <div className="ribbon text-center">
+            <span className='font-[525] text-[10px] absolute left-2 top-1'>
+              {Math.round(parseFloat(discountPercentage))}% OFF</span>
             <div className="ribbonTail"></div>
             <div className="ribbonLowerTail"></div>
           </div>
@@ -49,10 +50,10 @@ function Card({ product }) {
           )}
         </div>
         <div className="absolute inset-0 bg-gray-900 bg-opacity-40  flex-col items-center justify-center space-y-2 hidden group-hover:flex rounded-lg w-full">
-          <div className='absolute top-2 right-4 leading-none font-[475] hover:cursor-pointer' 
-          onClick={() => toggleWishlist(updatedProduct)}
+          <div className='absolute top-2 right-4 leading-none font-[475] hover:cursor-pointer'
+            onClick={() => toggleWishlist(updatedProduct)}
           >
-            <Icon name="fa-regular fa-heart" size="lg" color={isInWishlist ? 'red': 'white'} />
+            <Icon name="fa-regular fa-heart" size="lg" color={isInWishlist ? 'red' : 'white'} />
           </div>
 
           <div className="flex flex-col space-y-2 text-sm leading-none font-[475] w-full mx-auto px-2">
